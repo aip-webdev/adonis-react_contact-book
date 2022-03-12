@@ -1,0 +1,5 @@
+{
+  "public/app.js": "http://localhost:8080/public/app.js",
+  "public/runtime.js": "http://localhost:8080/public/runtime.js",
+  "public/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-304e01.js": "http://localhost:8080/public/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-304e01.js"
+}
