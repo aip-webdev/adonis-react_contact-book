@@ -1,0 +1,43 @@
+version: "3.9"
+volumes:
+  db-data:
+
+services:
+  web:
+    image: node
+    tty: true
+    working_dir: /home/node/app
+    command: "npm run dev"
+    volumes:
+      - ./backend:/home/node/app
+    ports:
+      - "80:3333"
+    networks:
+      - postgres
+
+  my-pg-13.3:
+    image: postgres:13.3
+    restart: always
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: 11223344
+    volumes:
+      - db-data:/var/lib/postgresql/dbdata
+      - ./ops/db-backups:/backup
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge

@@ -1,7 +1,6 @@
 import User from 'App/Models/User'
 import Group from 'App/Models/Group'
 import Contact from 'App/Models/Contact'
-import { IUser } from '../../../../frontend/types/global'
 
 export default class CommonController {
   public async all({ response }) {
@@ -10,7 +9,7 @@ export default class CommonController {
     const contacts = await Contact.all()
 
     let userStateData = users
-    let contactsStateData = users.map((user: IUser) => {
+    let contactsStateData = users.map((user) => {
       return {
         id: user.id,
         contactsList: contacts
